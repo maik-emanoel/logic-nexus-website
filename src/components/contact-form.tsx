@@ -1,22 +1,25 @@
-"use client";
+'use client'
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import { toast } from 'sonner'
 
 const formSchema = z.object({
-  userName: z.string().min(1, "Nome deve conter ao menos 1 caracter"),
-  userEmail: z.string().email("Email Inválido"),
+  userName: z.string().min(1, 'Nome deve conter ao menos 1 caracter'),
+  userEmail: z.string().email('Email Inválido'),
   projectName: z
     .string()
-    .min(1, "Nome do projeto deve conter ao menos 1 caracter"),
+    .min(1, 'Nome do projeto deve conter ao menos 1 caracter'),
   projectTechnologies: z
     .string()
-    .min(1, "Tecnologias do projeto devem conter ao menos 1 caracter"),
-  description: z.string().min(1, "Descrição deve conter ao menos 1 caracter"),
-});
+    .min(1, 'Tecnologias do projeto devem conter ao menos 1 caracter'),
+  description: z.string().min(1, 'Descrição deve conter ao menos 1 caracter'),
+})
 
-type FormSchema = z.infer<typeof formSchema>;
+type FormSchema = z.infer<typeof formSchema>
+
+const MAX_LENGTH = 273
 
 export function ContactForm() {
   const {
@@ -27,17 +30,33 @@ export function ContactForm() {
   } = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      userName: "",
-      userEmail: "",
-      projectName: "",
-      projectTechnologies: "",
-      description: "",
+      userName: '',
+      userEmail: '',
+      projectName: '',
+      projectTechnologies: '',
+      description: '',
     },
-  });
+  })
 
   function onSubmit(values: FormSchema) {
-    console.log(values);
-    reset();
+    const text = `
+    Nome: ${values.userName}
+    Email: ${values.userEmail}
+    Nome do projeto: ${values.projectName}
+    Tecnologias usadas: ${values.projectTechnologies}
+    Descrição: ${values.description}
+    `
+
+    if (text.length > MAX_LENGTH) {
+      toast.error('Maxímo de 273 caracteres atingido, por favor, diminua o texto.')
+      return
+    }
+
+    const encodedText = encodeURIComponent(text)
+    const whatsappUrl = `https://wa.me/558699503658?text=${encodedText}`
+    window.open(whatsappUrl, '_blank')
+
+    reset()
   }
 
   return (
@@ -51,7 +70,7 @@ export function ContactForm() {
             <input
               type="text"
               placeholder="Digite seu nome..."
-              {...register("userName")}
+              {...register('userName')}
               className="w-full max-w-[570px] border border-slate-400 dark:border-slate-500 rounded-lg outline-none px-4 py-3 focus:border-slate-700 bg-transparent"
             />
           </div>
@@ -68,7 +87,7 @@ export function ContactForm() {
             <input
               type="text"
               placeholder="Digite seu email..."
-              {...register("userEmail")}
+              {...register('userEmail')}
               className="w-full max-w-[570px] border border-slate-400 dark:border-slate-500 rounded-lg outline-none px-4 py-3 focus:border-slate-700 bg-transparent"
             />
           </div>
@@ -85,7 +104,7 @@ export function ContactForm() {
             <input
               type="text"
               placeholder="Digite o nome do seu projeto..."
-              {...register("projectName")}
+              {...register('projectName')}
               className="w-full max-w-[570px] border border-slate-400 dark:border-slate-500 rounded-lg outline-none px-4 py-3 focus:border-slate-700 bg-transparent"
             />
           </div>
@@ -102,7 +121,7 @@ export function ContactForm() {
             <input
               type="text"
               placeholder="Digite as tecnologias que serão usadas. (Separe por vírgulas)"
-              {...register("projectTechnologies")}
+              {...register('projectTechnologies')}
               className="w-full max-w-[570px] border border-slate-400 dark:border-slate-500 rounded-lg outline-none px-4 py-3 focus:border-slate-700 bg-transparent"
             />
           </div>
@@ -121,7 +140,7 @@ export function ContactForm() {
             </label>
             <textarea
               placeholder="Fale um pouco sobre o seu projeto..."
-              {...register("description")}
+              {...register('description')}
               className="w-full max-w-[570px] min-h-14 border border-slate-400 dark:border-slate-500 rounded-lg outline-none px-4 py-3 focus:border-slate-700 bg-transparent"
             />
           </div>
@@ -136,5 +155,5 @@ export function ContactForm() {
         Enviar
       </button>
     </form>
-  );
+  )
 }
