@@ -26,7 +26,7 @@ export function Contact() {
 
           <div>
             <a
-              href="https://wa.me/558699503658?text=Ol%C3%A1!%20%F0%9F%91%8B%0A%0AObrigado%20por%20entrar%20em%20contato%20com%20a%20LogicNexus!%20%F0%9F%9A%80%20Nossa%20equipe%20est%C3%A1%20dispon%C3%ADvel%20de%20segunda%20a%20Domingo,%20das%207h%20%C3%A0s%2021h.%20No%20momento,%20n%C3%A3o%20podemos%20responder%20imediatamente,%20mas%20assim%20que%20poss%C3%ADvel,%20retornaremos%20seu%20contato."
+              href="https://wa.me/558699503658?text=Ol%C3%A1,%20gostaria%20de%20fazer%20um%20servi%C3%A7o%20com%20voc%C3%AAs,%20poderiam%20me%20dar%20mais%20especifica%C3%A7%C3%B5es%C2%A0do%C2%A0trabalho?"
               target="_blank"
               className="block bg-white rounded-full p-1.5 transition-transform duration-300 hover:-translate-y-1"
             >
