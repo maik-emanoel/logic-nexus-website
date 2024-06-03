@@ -18,13 +18,13 @@ export function AccordionWrapper() {
         isActive={activeIndex === 2}
         onClick={() => setActiveIndex(2)}
         title="EXPERIÊNCIA DO USUÁRIO"
-        text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit mollitia facere earum, id culpa alias. Obcaecati accusamus"
+        text="A LogicNexus é especialista em UX, oferecendo pesquisa de usuário, testes de usabilidade e design intuitivo. Nosso foco é criar soluções eficientes que aumentem a satisfação dos usuários e o sucesso dos clientes."
       />
       <Accordion
         isActive={activeIndex === 3}
         onClick={() => setActiveIndex(3)}
         title="MANUTENÇÃO E IMPLEMENTAÇÃO DE FEATURES"
-        text="earum reiciendis necessitatibus ipsa! Dolor ab fugit quasi numquam aliquid harum, maiores totam."
+        text="A LogicNexus se especializa em manutenção e implementação de features, garantindo sistemas atualizados e funcionais com novas funcionalidades e melhorias contínuas."
       />
     </div>
   );
