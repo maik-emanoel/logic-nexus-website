@@ -24,6 +24,7 @@ export function Services() {
           width={509}
           height={318}
           className="max-w-[509px] w-full h-full mt-14 lg:hidden"
+          priority
         />
       </div>
     </Section>
