@@ -1,29 +1,32 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 
-import { ThemeProvider } from "@/providers/theme-provider";
-import opengraphImage from "./opengraph-image.svg";
+import { Toaster } from 'sonner'
+import './globals.css'
 
-const inter = Inter({ subsets: ["latin"] });
+import { ThemeProvider } from '@/providers/theme-provider'
+import opengraphImage from './opengraph-image.svg'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: "Logic Nexus - Technology",
+  metadataBase: new URL('https://logic-nexus.vercel.app/'),
+  title: 'Logic Nexus - Technology',
   description:
-    "Bem-vindo à LogicNexus, sua parceira ideal para soluções digitais inovadoras! Somos uma equipe de freelancers altamente qualificados, dedicada a transformar suas ideias em realidade através de design criativo e desenvolvimento de software de ponta.",
-  creator: "Maik Emanoel",
+    'Bem-vindo à LogicNexus, sua parceira ideal para soluções digitais inovadoras! Somos uma equipe de freelancers altamente qualificados, dedicada a transformar suas ideias em realidade através de design criativo e desenvolvimento de software de ponta.',
+  creator: 'Maik Emanoel',
   openGraph: {
-    title: "Logic Nexus - Technology",
+    title: 'Logic Nexus - Technology',
     description:
-      "Bem-vindo à LogicNexus, sua parceira ideal para soluções digitais inovadoras! Somos uma equipe de freelancers altamente qualificados, dedicada a transformar suas ideias em realidade através de design criativo e desenvolvimento de software de ponta.",
+      'Bem-vindo à LogicNexus, sua parceira ideal para soluções digitais inovadoras! Somos uma equipe de freelancers altamente qualificados, dedicada a transformar suas ideias em realidade através de design criativo e desenvolvimento de software de ponta.',
     images: opengraphImage.src,
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="pt-br" suppressHydrationWarning>
@@ -38,7 +41,9 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        
+        <Toaster richColors />
       </body>
     </html>
-  );
+  )
 }
