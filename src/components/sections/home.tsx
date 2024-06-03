@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import { Section } from "../section";
-import { Header } from "../header";
-import { Card } from "../card";
+import { Section } from '../section'
+import { Header } from '../header'
+import { Card } from '../card'
 
 export function Home() {
   return (
@@ -21,9 +21,12 @@ export function Home() {
                 Destaque-se na web. Juntos, podemos fazer isso!
               </p>
 
-              <button className="h-14 w-full rounded-lg bg-secondary font-bold text-xl text-white shadow-lg transition-opacity duration-300 sm:text-lg hover:opacity-90">
+              <a
+                href="#contact"
+                className="flex items-center justify-center h-14 w-full rounded-lg bg-secondary font-bold text-xl text-white shadow-lg transition-opacity duration-300 sm:text-lg hover:opacity-90"
+              >
                 FALE CONOSCO
-              </button>
+              </a>
             </div>
 
             <Image
@@ -56,5 +59,5 @@ export function Home() {
         </div>
       </Section>
     </>
-  );
+  )
 }
